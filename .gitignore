@@ -3,7 +3,7 @@ __pycache__/
 *.py[cod]
 
 # Virtual environment
-venv/
+gcalendar-venv/
 
 # Django stuff
 *.sqlite3
@@ -16,3 +16,4 @@ venv/
 # IDE files
 .vscode/
 .idea/
+
