@@ -1,0 +1,354 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+header {
+    background-color: #007bff;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2rem;
+    padding: 0.5rem 0;
+}
+
+.back-link, .back-to-list, .back-to-details {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    color: white;
+    background-color: #007bff;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    display: inline-block;
+    text-align: center;
+}
+
+.back-link:hover, .back-to-list:hover, .back-to-details:hover {
+    background-color: #0056b3;
+    text-decoration: none;
+}
+
+.container {
+    max-width: 800px;
+    margin: 2rem auto;
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.container h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    margin-top: -1rem;
+    margin-bottom: 1.5rem;
+    color: #333;
+}
+
+form {
+    display: grid;
+    gap: 1rem;
+}
+
+
+input, select, button {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#notification-container {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+    width: 300px;
+}
+
+.notification {
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    color: white;
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transform: translateX(-120%);
+    opacity: 1;
+    transition: transform 0.3s ease, opacity 0.5s ease;
+}
+
+.notification.success {
+    background-color: #28a745;
+}
+
+.notification.error {
+    background-color: #dc3545;
+}
+
+.notification.info {
+    background-color: #007bff;
+}
+
+ul.task-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+ul.task-list li {
+    background: #f1f3f5;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 1rem;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background 0.3s ease, transform 0.2s ease;
+    cursor: pointer;
+}
+
+ul.task-list li:hover {
+    background: #e9ecef;
+    transform: translateY(-5px);
+}
+
+.task-details {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.task-name {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #6f42c1;
+}
+
+.task-meta {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 0.5rem;
+}
+
+.task-info {
+    margin: 0.5rem 0;
+    text-align: center;
+}
+
+.task-title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 1rem; /* Adds spacing between buttons */
+    margin-top: 2rem;
+}
+
+.button {
+    padding: 0.8rem 1.5rem; /* Adjust padding for consistent sizing */
+    font-size: 1rem;
+    text-align: center;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: bold;
+    min-width: 140px; /* Ensures buttons are the same width */
+    display: inline-block; /* Ensures the button respects width and spacing */
+}
+
+.button:hover {
+    opacity: 0.9; /* Adds a hover effect */
+}
+
+.edit-btn {
+    background-color: #007bff;
+}
+
+.edit-btn:hover {
+    background-color: #0056b3;
+}
+
+.logout-btn {
+    background-color: #dc3545;
+}
+
+.logout-btn:hover {
+    background-color: #c82333;
+}
+
+.delete-btn, .logout-btn {
+    background-color: #dc3545;
+}
+
+.delete-btn:hover, .logout-btn:hover {
+    background-color: #c82333;
+}
+
+.add-task-btn {
+    display: block;
+    width: 100%; /* Make the button stretch to the container's width */
+    text-align: center;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 0.8rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.add-task-btn:hover {
+    background-color: #0056b3;
+}
+
+
+.user-profile {
+    position: absolute;
+    top: 1rem; /* Adjust the vertical position */
+    right: 1rem; /* Place it on the top-right corner */
+}
+
+.profile-link {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: bold;
+    background-color: #0056b3; /* Blue background */
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.profile-link:hover {
+    background-color: #003f7f; /* Darker blue on hover */
+    text-decoration: none;
+}
+
+.form-footer {
+    text-align: center;
+    margin-top: 1.5rem; /* Add space above the text */
+    font-size: 0.9rem;
+}
+
+.register-link {
+    color: #007bff; /* Match button color */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.register-link:hover {
+    color: #0056b3; /* Darker shade on hover */
+    text-decoration: underline;
+}
+
+.form-title {
+    text-align: center; /* Center-align the text */
+    font-size: 2rem; /* Adjust font size as needed */
+    font-weight: bold; /* Make the text bold */
+    margin-bottom: 1.5rem; /* Add space below the title */
+    color: #333; /* Adjust color if needed */
+}
+
+.filter-button {
+    display: block;
+    width: 100%; /* Make the button stretch to the container's width */
+    text-align: center;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 0.8rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+  }
+
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    border-radius: 4px;
+    z-index: 1;
+  }
+
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+  .dropdown-item {
+    position: relative;
+    padding: 12px 16px;
+    font-weight: bold;
+    display: block;
+    color: #007bff;
+    text-decoration: none;
+  }
+
+  .dropdown-item:hover {
+    background-color: #f8f9fa;
+  }
+
+  .sub-dropdown {
+    position: relative;
+  }
+
+  .sub-dropdown-content {
+    display: none;
+    position: absolute;
+    right: 100%;
+    top: 0;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    border-radius: 4px;
+    
+  }
+
+  .sub-dropdown:hover .sub-dropdown-content {
+    display: block;
+  }

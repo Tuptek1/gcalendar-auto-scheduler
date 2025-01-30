@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}Your Tasks{% endblock %}
+
+
+{% block content %}
+{% load query_params %}
+
+<div id="notification-container"></div> <!-- Notification container -->
+
+<div class="container">
+    <h2>Your Tasks</h2>
+    <ul class="task-list">
+        {% for task in tasks %}
+        <li onclick="window.location.href='{% url 'tasks:task_detail' task.id %}'">
+            <div class="task-details">
+                <span class="task-name">{{ task.name }}</span>
+                <span class="task-meta">{{ task.task_type }} | {{ task.priority }}</span>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+    <div class="button-container">
+      <a href="{% url 'tasks:task_add' %}" class="add-task-btn">+ Add Task</a>
+      <div class="dropdown">
+          <button class="filter-button">Filters</button>
+          <div class="dropdown-content">
+              <div class="sub-dropdown">
+                  <div class="dropdown-item">Priority</div>
+                  <div class="sub-dropdown-content">
+                      <a href="{% toggle_query_param 'priority' 'high' %}" class="dropdown-item">High</a>
+                      <a href="{% toggle_query_param 'priority' 'medium' %}" class="dropdown-item">Medium</a>
+                      <a href="{% toggle_query_param 'priority' 'low' %}" class="dropdown-item">Low</a>
+                  </div>
+              </div>
+              <div class="sub-dropdown">
+                  <div class="dropdown-item">Task Type</div>
+                  <div class="sub-dropdown-content">
+                      <a href="{% toggle_query_param 'task_type' 'work' %}" class="dropdown-item">Work</a>
+                      <a href="{% toggle_query_param 'task_type' 'exercise' %}" class="dropdown-item">Exercise</a>
+                      <a href="{% toggle_query_param 'task_type' 'household' %}" class="dropdown-item">Household</a>
+                      <a href="{% toggle_query_param 'task_type' 'leisure' %}" class="dropdown-item">Leisure</a>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+{% endblock %}

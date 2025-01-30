@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}User Profile{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>User Profile</h2>
+    <p><strong>Username:</strong> {{ user.username }}</p>
+    <p><strong>Email:</strong> {{ user.email }}</p>
+    <p><strong>First Name:</strong> {{ user.first_name }}</p>
+    <p><strong>Last Name:</strong> {{ user.last_name }}</p>
+    <p><strong>Date Joined:</strong> {{ user.date_joined|date:"M d, Y H:i" }}</p>
+
+    <div class='button-container'>
+        <a href="{% url 'users:profile_edit' %}" class="button edit-btn">Edit Profile</a>
+        <a href="{% url 'tasks:task_list' %}" class="back-to-list">Back to Task List</a>
+        <form method="post" action="{% url 'users:logout' %}">
+            {% csrf_token %}
+            <button class="logout-btn">Logout</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

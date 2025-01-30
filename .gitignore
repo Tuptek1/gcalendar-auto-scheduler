@@ -1,0 +1,19 @@
+# Byte-compiled files
+__pycache__/
+*.py[cod]
+
+# Virtual environment
+gcalendar-venv/
+
+# Django stuff
+*.sqlite3
+/media/
+/staticfiles/
+
+# Secrets
+*.env
+
+# IDE files
+.vscode/
+.idea/
+
