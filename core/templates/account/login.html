@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load allauth account %}
+{% load socialaccount %}
+
+
+{% block title %}{% trans "Sign In" %}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="form-title">{% trans "Sign In" %}</h1>
+    <form method="post" action="{% url 'account_login' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        {% if request.GET.next %}
+            <input type="hidden" name="next" value="{{ request.GET.next }}"/>
+        {% endif %}
+        <button type="submit" class="submit-btn">{% trans "Sign In" %}</button>
+    </form>
+    <div class="form-footer">
+        <p>
+            {% blocktrans with signup_link='<a href="'|add:signup_url|add:'" class="register-link">sign up</a>'|safe %}
+                Don't have an account? {{ signup_link }} first.
+            {% endblocktrans %}
+        </p>
+        <a href="{% provider_login_url 'google' %}"> Login via Google </a>
+    </div>
+</div>
+{% endblock %}

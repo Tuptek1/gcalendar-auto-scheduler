@@ -12,9 +12,9 @@
     <p><strong>Date Joined:</strong> {{ user.date_joined|date:"M d, Y H:i" }}</p>
 
     <div class='button-container'>
-        <a href="{% url 'users:profile_edit' %}" class="button edit-btn">Edit Profile</a>
+        <a href="{% url 'accounts_profile:profile_edit' %}" class="button edit-btn">Edit Profile</a>
         <a href="{% url 'tasks:task_list' %}" class="back-to-list">Back to Task List</a>
-        <form method="post" action="{% url 'users:logout' %}">
+        <form method="post" action="{% url 'account_logout' %}">
             {% csrf_token %}
             <button class="logout-btn">Logout</button>
         </form>

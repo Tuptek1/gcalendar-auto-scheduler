@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'django_extensions',
     'debug_toolbar',
     'tasks',
@@ -61,6 +62,10 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'allauth.account.middleware.AccountMiddleware',
+]
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',  
+    'allauth.account.auth_backends.AuthenticationBackend',  
 ]
 
 ROOT_URLCONF = 'core.urls'
@@ -89,7 +94,7 @@ WSGI_APPLICATION = 'core.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',  # Change to the correct database engine
+        'ENGINE': 'django.db.backends.mysql', 
         'NAME': config('DATABASE_NAME'),
         'USER': config('DATABASE_USER'),
         'PASSWORD': config('DATABASE_PASSWORD'),
@@ -139,8 +144,8 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_URL = '/users/login/' 
-LOGOUT_REDIRECT_URL = '/users/login/'  
+LOGIN_URL = '/accounts/login/' 
+LOGOUT_REDIRECT_URL = '/accounts/login/'  
 LOGIN_REDIRECT_URL = '/tasks/' 
 
 STATICFILES_DIRS = [
@@ -152,9 +157,9 @@ INTERNAL_IPS = [
 
 SITE_ID = 1  # Default site ID
 
-ACCOUNT_EMAIL_VERIFICATION = "optional"
-ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_AUTHENTICATION_METHOD = "email"
+ACCOUNT_FORMS = {
+    'signup': 'users.forms.CustomSignupForm', 
+}
 
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
@@ -170,13 +175,14 @@ SOCIALACCOUNT_PROVIDERS = {
 
 
 
-SOCIALACCOUNT_PROVIDERS['google']['APP'] = {
-    'client_id': config('GOOGLE_CLIENT_ID'),
-    'secret': config('GOOGLE_CLIENT_SECRET'),
-    'key': ''
-}
+# SOCIALACCOUNT_PROVIDERS['google']['APP'] = {
+#     'client_id': config('GOOGLE_CLIENT_ID'),
+#     'secret': config('GOOGLE_CLIENT_SECRET'),
+#     'key': ''
+# }
 
-AUTHENTICATION_BACKENDS = [
-    'django.contrib.auth.backends.ModelBackend',  
-    'allauth.account.auth_backends.AuthenticationBackend',  
-]
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+ACCOUNT_FORMS = {
+    'signup': 'users.forms.CustomSignupForm',
+}
